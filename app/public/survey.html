@@ -151,33 +151,51 @@
 
 
 
-    <!-- Script to capture user input from survey and add  -->
-    <script type="text/javascript">
-        $("#submit").on("click", function (event) {
-            event.preventDefault();
-
-            var newSurvey = {
-                surveyName: $("#name").val().trim(),
-                surveyPhoto: $("#photo").val().trim(),
-                q2: $("#q2").val(),
-                q1: $("#q1").val(),
-                q3: $("#q3").val(),
-                q4: $("#q4").val(),
-                q5: $("#q5").val(),
-                q6: $("#q6").val(),
-                q7: $("#q7").val(),
-                q8: $("#q8").val(),
-                q9: $("#q9").val(),
-                q10: $("#q10").val()
-            };
-
-            console.log(newSurvey);
-
-            $.post("/api/friends", newSurvey, function () {
-                alert("Thank you! Calculating your closest match...")
-            });
-        });
-    </script>
 </body>
 
 </html>
+
+<!-- Script to capture user input from survey -->
+<script type="text/javascript">
+    $("#submit").on("click", function (event) {
+        event.preventDefault();
+
+        var newSurvey = {
+            surveyName: $("#name").val().trim(),
+            surveyPhoto: $("#photo").val().trim(),
+            scores: [
+                $("#q2").val(),
+                $("#q1").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val(),
+                $("#q6").val(),
+                $("#q7").val(),
+                $("#q9").val(),
+                $("#q8").val(),
+                $("#q10").val()
+            ]
+            // add function to create totalScore
+        };
+
+        console.log(newSurvey);
+
+        $.post("/api/friends", newSurvey, function () {
+            alert("Thank you! Calculating your closest match...");
+
+            $("#name").val("");
+            $("#photo").val("");
+            $("#q1").val("");
+            $("#q2").val("");
+            $("#q3").val("");
+            $("#q4").val("");
+            $("#q5").val("");
+            $("#q6").val("");
+            $("#q7").val("");
+            $("#q8").val("");
+            $("#q9").val("");
+            $("#q10").val("");
+
+        });
+    });
+</script>

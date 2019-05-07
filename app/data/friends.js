@@ -21,19 +21,27 @@ function Friend(name, photo, scores) {
 
 Friend.prototype.getArr = function () {
     var scores = this.scores.split(", ");
-    console.log(scores);
+    // console.log(scores);
 }
 
+var friends = [];
 
 connection.query("SELECT * FROM friends", function (err, res) {
     if (err) throw err;
-    var name = res[0].name;
-    var photo = res[0].photo;
-    var scores = res[0].scores;
+    var name;
+    var photo;
+    var scores;
+    for (var i = 0; i < res.length; i++) {
+        name = res[0].name;
+        photo = res[0].photo;
+        scores = res[0].scores;
+    };
 
     var friend = new Friend(name, photo, scores);
     friend.getArr();
-})
+
+    friends.push(friend);
+});
 
 // var friends = [{
 //         name: "Randy",

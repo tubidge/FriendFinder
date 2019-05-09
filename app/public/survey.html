@@ -152,6 +152,7 @@
         </footer>
     </div>
 
+    <!-- Have not yet figured out how to populate the modal with matching user -->
     <!-- Modal to display matching friend -->
     <div id="results-modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -211,11 +212,9 @@
         console.log(newSurvey);
 
         $.post("/api/friends", newSurvey, function (data) {
-            // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+            // populating and displaying modal with matched user data
             $("#match-name").text(data.name);
             $("#match-img").attr("src", data.photo);
-
-            // Show the modal with the best match
             $("#results-modal").modal("toggle");
 
             // $("#name").val("");

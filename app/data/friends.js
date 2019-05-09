@@ -43,6 +43,8 @@
 //     };
 // });
 
+// commented out database code as I needed to focus on the rest of the app.
+
 var friends = [{
         name: "Randy",
         photo: "https://vignette.wikia.nocookie.net/spsot/images/b/b9/Randy_Marsh_facebook_profile.png/revision/latest?cb=20141024175401",

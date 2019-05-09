@@ -1,8 +1,8 @@
-## FriendFinder
+# FriendFinder
 
 This application will determine compatible users by comparing their answers to a 10 question survey.
 
-# Instructions
+## Instructions
 
 1. Click the 'Go to Survey' button.
 

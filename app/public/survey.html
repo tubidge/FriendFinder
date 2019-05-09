@@ -183,8 +183,8 @@
         event.preventDefault();
 
         var newSurvey = {
-            surveyName: $("#name").val().trim(),
-            surveyPhoto: $("#photo").val().trim(),
+            name: $("#name").val().trim(),
+            photo: $("#photo").val().trim(),
             scores: [
                 $("#q2").val(),
                 $("#q1").val(),
@@ -197,6 +197,7 @@
                 $("#q8").val(),
                 $("#q10").val()
             ],
+            totalScore: 0
             // Cannot get this function to work here. Scores is undefined.
             // totalScore: 0,
             // calcScore: function () {

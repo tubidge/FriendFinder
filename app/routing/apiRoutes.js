@@ -54,6 +54,8 @@ module.exports = function (app) {
         matchedFriend = friends[lowIndex];
         console.log(`You matched with ${matchedFriend.name}`);
 
+        // send response of matching friend.
+        res.json(matchedFriend);
     });
 
 };

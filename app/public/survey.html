@@ -213,9 +213,10 @@
 
         $.post("/api/friends", newSurvey, function (data) {
             // populating and displaying modal with matched user data
-            $("#match-name").text(data.name);
-            $("#match-img").attr("src", data.photo);
-            $("#results-modal").modal("toggle");
+            console.log(data);
+            // $("#match-name").text(data.name);
+            // $("#match-img").attr("src", data.photo);
+            // $("#results-modal").modal("toggle");
 
             // $("#name").val("");
             // $("#photo").val("");

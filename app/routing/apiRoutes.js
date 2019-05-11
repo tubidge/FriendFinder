@@ -6,12 +6,18 @@ module.exports = function (app) {
     });
 
     app.post("/api/friends", function (req, res) {
-        // variable to hold the current user's total score, used for comparison with next function.
+        // pushing the new user object to the friends data array.
+        friends.push(req.body);
+
+        // variable to hold the current user's total score, used for comparison with existing friends.
         var newTotalScore = 0;
-        // array to hold each total score difference between existing friends and new user.
+
+        // array to hold each total score difference between existing friends and current user.
         // then we can determine which difference is the smallest,
         // and use that number's index to find it's user.
         var scoreDiffs = [];
+
+        // variable to hold the index of the lowest value in the above array.
         var lowIndex = 0;
         var matchedFriend = undefined;
 
@@ -20,10 +26,8 @@ module.exports = function (app) {
             newTotalScore += parseInt(req.body.scores[i]);
         };
         req.body.totalScore = newTotalScore;
-        // pushing the new user object to the friends data array.
-        friends.push(req.body);
 
-        // for loop to create score differences for each user comparison
+        // for loop to create score differences for each user comparison, pushing each difference to scoreDiffs array.
         for (var i = 0; i < (friends.length) - 1; i++) {
             console.log(`comparing friend: ${friends[i].name}`);
             var currComparison = friends[i].totalScore;
@@ -32,14 +36,13 @@ module.exports = function (app) {
             } else if (newTotalScore < currComparison) {
                 scoreDiffs.push(currComparison - newTotalScore);
             } else if (newTotalScore === currComparison) {
-                console.log(`Friend ${friends[i].name} has the same score!`);
+                scoreDiffs.push(0);
             };
         };
 
         console.log(`Score Differences: ${scoreDiffs}`);
 
         // now determine which score diff is the lowest, find it's index, and return that friend.
-
         if (scoreDiffs.length === 0) {
             return -1;
         }
@@ -50,7 +53,6 @@ module.exports = function (app) {
                 max = scoreDiffs[i];
             };
         };
-        console.log(lowIndex);
         matchedFriend = friends[lowIndex];
         console.log(`You matched with ${matchedFriend.name}`);
 

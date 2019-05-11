@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <title>FriendFinder</title>
 </head>
 
@@ -152,7 +153,6 @@
         </footer>
     </div>
 
-    <!-- Have not yet figured out how to populate the modal with matching user -->
     <!-- Modal to display matching friend -->
     <div id="results-modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -214,22 +214,22 @@
         $.post("/api/friends", newSurvey, function (data) {
             // populating and displaying modal with matched user data
             console.log(data);
-            // $("#match-name").text(data.name);
-            // $("#match-img").attr("src", data.photo);
-            // $("#results-modal").modal("toggle");
-
-            // $("#name").val("");
-            // $("#photo").val("");
-            // $("#q1").val("");
-            // $("#q2").val("");
-            // $("#q3").val("");
-            // $("#q4").val("");
-            // $("#q5").val("");
-            // $("#q6").val("");
-            // $("#q7").val("");
-            // $("#q8").val("");
-            // $("#q9").val("");
-            // $("#q10").val("");
+            $("#match-name").text(data.name);
+            $("#match-img").attr("src", data.photo);
+            $("#results-modal").modal("toggle");
+            // clearing out survey fields after submission
+            $("#name").val("");
+            $("#photo").val("");
+            $("#q1").val("");
+            $("#q2").val("");
+            $("#q3").val("");
+            $("#q4").val("");
+            $("#q5").val("");
+            $("#q6").val("");
+            $("#q7").val("");
+            $("#q8").val("");
+            $("#q9").val("");
+            $("#q10").val("");
 
         });
     });
